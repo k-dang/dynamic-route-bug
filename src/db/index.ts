@@ -1,26 +1,18 @@
+import { neon } from "@neondatabase/serverless";
+const sql = neon(process.env.DATABASE_URL!);
+
 export type Post = {
   id: number;
   title: string;
   likes: number;
 };
 
-const posts: Post[] = [
-  { id: 1, title: "Post 1", likes: 0 },
-  { id: 2, title: "Post 2", likes: 0 },
-  { id: 3, title: "Post 3", likes: 0 },
-];
-
 export async function getPosts() {
-  await new Promise((r) => setTimeout(r, 100));
-
+  const posts = await sql`SELECT * FROM posts ORDER BY id`;
+  
   return posts;
 }
 
 export async function incrementLikes(postId: number) {
-  await new Promise((r) => setTimeout(r, 100));
-
-  const post = posts.find((p) => p.id === postId);
-  if (post) {
-    post.likes += 1;
-  }
+  await sql`UPDATE posts SET likes = likes + 1 WHERE id = ${postId}`;
 }
