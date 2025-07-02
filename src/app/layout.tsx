@@ -32,6 +32,7 @@ export default function RootLayout({
         <main className="p-4">
           <div className="flex gap-4">
             <Link className="text-blue-500 hover:underline" href="/">Home Page</Link>
+            <Link className="text-blue-500 hover:underline" href="/second">Second Page</Link>
             <Link className="text-blue-500 hover:underline" href="/like">Like Page</Link>
           </div>
           <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
