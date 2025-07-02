@@ -6,7 +6,7 @@ export default async function LikePage() {
 
   return (
     <div>
-      <h1>Currently on: Like Page</h1>
+      <h1>Currently on: Second Page</h1>
       <Posts posts={posts} />
     </div>
   );
