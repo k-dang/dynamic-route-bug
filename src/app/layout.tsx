@@ -34,8 +34,8 @@ export default function RootLayout({
             <Link className="text-blue-500 hover:underline" href="/">
               Home Page
             </Link>
-            <Link className="text-blue-500 hover:underline" href="/count">
-              Count Page
+            <Link className="text-blue-500 hover:underline" href="/search?term=example">
+              Search Page
             </Link>
           </div>
           <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
