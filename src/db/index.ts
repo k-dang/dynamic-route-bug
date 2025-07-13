@@ -1,18 +1,11 @@
 import { neon } from "@neondatabase/serverless";
 const sql = neon(process.env.DATABASE_URL!);
 
-export type Post = {
-  id: number;
-  title: string;
-  likes: number;
-};
-
-export async function getPosts() {
-  const posts = await sql`SELECT * FROM posts ORDER BY id`;
-  
-  return posts as Post[];
+export async function getCounter() {
+  const result = await sql`SELECT count FROM counter`;
+  return result[0].count as number;
 }
 
-export async function incrementLikes(postId: number) {
-  await sql`UPDATE posts SET likes = likes + 1 WHERE id = ${postId}`;
+export async function incrementCounter() {
+  await sql`UPDATE counter SET count = count + 1`;
 }

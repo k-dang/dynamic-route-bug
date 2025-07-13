@@ -1,7 +1,7 @@
 import { getCounter } from "@/db";
 import { IncrementCountButton } from "@/components/IncrementCountButton";
 
-export default async function HomePage() {
+export default async function CountPage() {
   const count = await getCounter();
 
   return (

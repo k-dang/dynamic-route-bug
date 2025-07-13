@@ -1,7 +1,9 @@
 "use server";
 
-import { incrementLikes } from "@/db";
+import { incrementCounter } from "@/db";
+import { revalidatePath } from "next/cache";
 
-export async function likePost(id: number) {
-  await incrementLikes(id);
+export async function increment() {
+  await incrementCounter();
+  revalidatePath("/");
 }
